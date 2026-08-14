@@ -1,0 +1,26 @@
+{
+  "name": "AADHAR — Business Software for Nepal",
+  "short_name": "AADHAR",
+  "description": "Billing, inventory, operations and reporting software for restaurants, retail stores, hotels, salons, travel agencies and event venues in Nepal.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/LOGO_Icon_only.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/LOGO_Icon_only.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

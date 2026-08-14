@@ -1,0 +1,64 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Admin users collection - only authenticated admins
+    match /admin_users/{userId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Restaurants collection - allow read for license verification
+    match /restaurants/{restaurantId} {
+      allow read: if true; // Public read for license verification
+      allow write: if request.auth != null; // Only admins can write
+    }
+    
+    // Licenses collection - allow read for verification
+    match /licenses/{licenseKey} {
+      allow read: if true; // Public read for license verification
+      allow write: if request.auth != null; // Only admins can write
+    }
+    
+    // Payments collection - admin only
+    match /payments/{paymentId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Verification logs - allow write for logging
+    match /verification_logs/{logId} {
+      allow read: if request.auth != null;
+      allow write: if true; // Allow POS systems to log verifications
+    }
+    
+    // Blog posts - public read for published posts, admin write
+    match /blog_posts/{postId} {
+      allow read: if true; // Public can read all blog posts
+      allow write: if request.auth != null; // Only admins can write
+    }
+    
+    // Job postings - public read for active jobs, admin write
+    match /job_postings/{jobId} {
+      allow read: if true; // Public can read all job postings
+      allow write: if request.auth != null; // Only admins can write
+    }
+    
+    // Leads collection - admin only
+    match /leads/{leadId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Contacts collection - admin only
+    match /contacts/{contactId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Businesses collection - admin only
+    match /businesses/{businessId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Products collection - admin only
+    match /products/{productId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
