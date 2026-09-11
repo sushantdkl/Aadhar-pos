@@ -15,11 +15,13 @@ try {
     console.log('✓ Column cloud_backup_enabled already exists in licenses table');
   } else {
     // Add the column
-    db.exec(`
+    db.exec(` 
+
       ALTER TABLE licenses 
       ADD COLUMN cloud_backup_enabled INTEGER DEFAULT 0
     `);
-    console.log('✓ Successfully added cloud_backup_enabled column to licenses table');
+    console.log
+    ('✓ Successfully added cloud_backup_enabled column to licenses table');
   }
   
   // Verify the column was added
@@ -42,6 +44,7 @@ try {
 } catch (error) {
   console.error('Error adding column:', error.message);
   process.exit(1);
+  
 }
 
 db.close();
